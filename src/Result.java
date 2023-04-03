@@ -4,8 +4,16 @@ class Result {
     String znak;
 
     Result(int x, int y, String znak) {
-        this.x = x;
-        this.y = y;
+     if   (x<=10)this.x = x;
+     else {System.out.println("ошибка ввода,первое число больше 10");
+         System.exit(0);
+     }
+
+        if   (y<=10)this.y = y;
+        else {System.out.println("ошибка ввода,второе число больше 10");
+            System.exit(0);
+        }
+
         this.znak = znak;
     }
 
