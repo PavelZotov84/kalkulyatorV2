@@ -6,10 +6,11 @@ public class Main {
     }
 
     public static String calc(String input){
-      //  System.out.println("вы ввели- "+input);
         Chek chek = new Chek(input);
-        chek.cheking();
-        Result result = new Result(chek.getNum1(), chek.getNum2(), chek.getZn());
-        return result.res();
+String res= Integer.toString(chek.romOrArab(chek.parse()));
+    return res;
+
+    //    Result result = new Result(chek.getNum1(), chek.getNum2(), chek.getZn());
+     //   return result.res();
     }
 }

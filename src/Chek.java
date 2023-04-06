@@ -4,38 +4,39 @@ class Chek {
     private String line;
     public String zn;
 
-    Chek(String line){
+    Chek(String line) {
         this.line = line;
     }
-    Chek(){}
 
 
 
-    void cheking(){
 
-        String [] mas= line.split(" ");
-        try {
-            num1 = Integer.parseInt(mas[0]);
-            num2 = Integer.parseInt(mas[2]);
+    String[] parse() {
+        String[] mas = line.split(" ");
+        return mas;
+    }
+
+    int romOrArab(String [] x) {
+        String arab = "1,2,3,4,5,6,7,8,9,10";
+        String rome = "I,II,III,IV,V,VI,VII,VIII,IX,X";
+
+        if (arab.contains(x[0]) && arab.contains(x[2])) {
+            System.out.println("Арабская система счисления");
+            return 1;
         }
-        catch (NumberFormatException e){
-            System.out.println("Введён неправильный формат значений");
-            System.exit(0);
+
+        else if (rome.contains(x[0]) && rome.contains(x[2])) {
+            System.out.println("Римская система счисления");
+            return 2;
         }
-            zn=mas[1];
-            System.out.println(num1+zn+num2);
+        else {
+            System.out.println("Error-ошибка,введенные числа должны быть в диапазоне от 1 до 10 включительно и" +
+                    " принадлежать к одной системе счисления.");
+        }
+        return 0;
     }
-
-
-    public int getNum1() {
-        return num1;
-    }
-
-    public int getNum2() {
-        return num2;
-    }
-
     public String getZn() {
         return zn;
     }
+
 }
