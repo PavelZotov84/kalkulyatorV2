@@ -81,11 +81,12 @@ class Chek {
             if (d < 1) {
                 return ed[e - 1];
             } else if (d > 0 && e > 0) {
-                return  des[d - 1] + ed[e - 1];
+                return des[d - 1] + ed[e - 1];
             } else if (d > 0 && e < 1) {
-                return  des[d - 1];
+                return des[d - 1];
             }
-        } catch (ArrayIndexOutOfBoundsException ae) {
+        }
+        catch (ArrayIndexOutOfBoundsException ae) {
             System.out.println("В римских цифрах не существует нуля");
             System.exit(0);
         }

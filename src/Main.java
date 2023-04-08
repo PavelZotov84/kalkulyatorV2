@@ -18,9 +18,6 @@ public class Main {
             result.resAr();
             return "out: "+ chek.convertorArabtoRom(result.res);
         }
-
-
         else return "error";
-
     }
 }
