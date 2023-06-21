@@ -20,24 +20,30 @@ class Chek {
         String arab = "1,2,3,4,5,6,7,8,9,10";
         String rome = "I,II,III,IV,V,VI,VII,VIII,IX,X";
 
-        if (arab.contains(x[0]) && arab.contains(x[2])) {
-            num1 = Integer.parseInt(parse()[0]);
-            num2 = Integer.parseInt(parse()[2]);
-            zn = parse()[1];
-            return 1;
+        try {
+            if (arab.contains(x[0]) && arab.contains(x[2])) {
+                num1 = Integer.parseInt(parse()[0]);
+                num2 = Integer.parseInt(parse()[2]);
+                zn = parse()[1];
+                return 1;
 
-        } else if (rome.contains(x[0]) && rome.contains(x[2])) {
-            rom1 = parse()[0];
-            rom2 = parse()[2];
-            zn = parse()[1];
-            return 2;
+            } else if (rome.contains(x[0]) && rome.contains(x[2])) {
+                rom1 = parse()[0];
+                rom2 = parse()[2];
+                zn = parse()[1];
+                return 2;
 
-        } else {
-            System.out.println("Ошибка ввода,вводимые числа должны быть в диапазоне от 1 до 10 включительно и" +
-                    " принадлежать к одной системе счисления.");
+            } else {
+                System.out.println("Ошибка ввода,вводимые числа должны быть в диапазоне от 1 до 10 включительно и" +
+                        " принадлежать к одной системе счисления.");
+                System.exit(0);
+            }
+            return 0;
+        } catch (ArrayIndexOutOfBoundsException ae) {
+            System.out.println("строка не является математической операцией");
             System.exit(0);
         }
-        return 0;
+return 0;
     }
 
     public String getZn() {
@@ -87,7 +93,7 @@ class Chek {
             }
         }
         catch (ArrayIndexOutOfBoundsException ae) {
-            System.out.println("В римских цифрах не существует нуля");
+            System.out.println("В римских цифрах не существует нуля и отрицательных чисел");
             System.exit(0);
         }
         return "0";

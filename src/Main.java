@@ -6,6 +6,7 @@ public class Main {
     }
 
     public static String calc(String input){
+
         Chek chek = new Chek(input);
         int ra=chek.romOrArab(chek.parse());
         if (ra==1) {
