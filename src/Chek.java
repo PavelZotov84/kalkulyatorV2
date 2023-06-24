@@ -1,3 +1,5 @@
+import java.io.IOException;
+
 class Chek {
     public int num1;
     public int num2;
@@ -11,40 +13,39 @@ class Chek {
     }
 
 
-    String[] parse() {
+    String[] parse() throws Exception {
         String[] mas = line.split(" ");
-        return mas;
+        if(mas.length!=3) {
+            throw new Exception("ошибка ввода введите два операнда и один оператор ");
+        }
+        else return mas;
     }
 
-    int romOrArab(String[] x) {
+    int romOrArab(String[] x) throws Exception {
         String arab = "1,2,3,4,5,6,7,8,9,10";
         String rome = "I,II,III,IV,V,VI,VII,VIII,IX,X";
 
-        try {
             if (arab.contains(x[0]) && arab.contains(x[2])) {
                 num1 = Integer.parseInt(parse()[0]);
                 num2 = Integer.parseInt(parse()[2]);
                 zn = parse()[1];
                 return 1;
 
-            } else if (rome.contains(x[0]) && rome.contains(x[2])) {
+            }
+            else if (rome.contains(x[0]) && rome.contains(x[2])) {
                 rom1 = parse()[0];
                 rom2 = parse()[2];
                 zn = parse()[1];
                 return 2;
 
-            } else {
-                System.out.println("Ошибка ввода,вводимые числа должны быть в диапазоне от 1 до 10 включительно и" +
-                        " принадлежать к одной системе счисления.");
-                System.exit(0);
             }
-            return 0;
-        } catch (ArrayIndexOutOfBoundsException ae) {
-            System.out.println("строка не является математической операцией");
-            System.exit(0);
-        }
-return 0;
+            else {
+                throw new Exception("Ошибка ввода,вводимые числа должны быть в диапазоне от 1 до 10 включительно и" +
+                        " принадлежать к одной системе счисления.");
+
+            }
     }
+
 
     public String getZn() {
         return zn;
@@ -78,24 +79,25 @@ return 0;
         return 0;
     }
 
-    String convertorArabtoRom(int b) {
+    String convertorArabtoRom(int b) throws Exception {
+        if (b<=0){
+            throw new Exception("в римской системе нет отрицательных чисел и нуля");
+        }
         int d = b / 10;
         int e = b % 10;
         String des[] = {"X", "XX", "XXX", "XL", "L", "LX", "LXX", "LXXX", "XC", "C"};
         String ed[] = {"I", "II", "III", "IV", "V", "VI", "VII", "VIII", "IX", "X"};
-        try {
-            if (d < 1) {
-                return ed[e - 1];
-            } else if (d > 0 && e > 0) {
-                return des[d - 1] + ed[e - 1];
-            } else if (d > 0 && e < 1) {
-                return des[d - 1];
-            }
+
+        if (d < 1) {
+            return ed[e - 1];
         }
-        catch (ArrayIndexOutOfBoundsException ae) {
-            System.out.println("В римских цифрах не существует нуля и отрицательных чисел");
-            System.exit(0);
+        else if (d > 0 && e > 0) {
+            return des[d - 1] + ed[e - 1];
         }
+        else if (d > 0 && e < 1) {
+            return des[d - 1];
+        }
+
         return "0";
     }
 }

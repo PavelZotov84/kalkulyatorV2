@@ -1,11 +1,13 @@
+import java.io.IOException;
+
 public class Main {
-    public static void main(String[] args) {
+    public static void main(String[] args) throws Exception {
         Input input = new Input();
         String str = input.vvod().toUpperCase();
         System.out.println(calc(str));
     }
 
-    public static String calc(String input){
+    public static String calc(String input) throws Exception {
 
         Chek chek = new Chek(input);
         int ra=chek.romOrArab(chek.parse());
